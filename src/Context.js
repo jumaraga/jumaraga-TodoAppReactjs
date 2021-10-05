@@ -1,5 +1,5 @@
 import React from "react";
-
+import { useLocalStorage } from "./localStorage";
 const TodoContext = React.createContext();
 
 function TodoProvider(props){
@@ -9,8 +9,8 @@ function TodoProvider(props){
       {text:'miau',completed: false },
     ]
    const [lista, setLista]=React.useState(todos);
-   const [searchvalue, setSearchValue]= React.useState('')
-   
+   const [searchvalue, setSearchValue]= React.useState('');
+   const [openModal, setOpenModal]= React.useState(false);
    let searchedTodo= [];
  
    (!searchvalue.length>=1)
@@ -27,6 +27,11 @@ function TodoProvider(props){
      newTodos.splice(todoIndex, 1);
      setLista(newTodos);
    }; 
+   const saveAdd = (text) => {
+      const newTodos = [...lista];
+      newTodos.push(text);
+      setLista(newTodos);
+    }; 
    
    return(
       <TodoContext.Provider value={{
@@ -36,6 +41,9 @@ function TodoProvider(props){
             searchedTodo,
             deleteTodo,
             setSearchValue,
+            setOpenModal,
+            openModal,
+            saveAdd,
       }}>
          {props.children}
       </TodoContext.Provider>

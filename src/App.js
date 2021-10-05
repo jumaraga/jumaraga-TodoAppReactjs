@@ -4,29 +4,35 @@ import './App.css';
 import { ToDoSearch } from './ToDoSearch';
 import { TodoContext } from './Context';
 import { TodoProvider } from './Context';
+import { ToDoButton } from './ToDoButtom';
 import React from 'react';
+import { Portal } from './model';
+import { ToDoForm } from './ToDoForm';
 
 function App() { 
-/*   const {
+ /*   const {
     lista,
     searchvalue,
     setLista,  
     searchedTodo,
     deleteTodo,
     setSearchValue,
-  } =React.useContext(TodoContext); */
-  
+  } =React.useContext(TodoContext);  */
+    
   return ( 
     <TodoProvider>
-      <React.Fragment>
-      <ToDoSearch    /* setSearchValue={setSearchValue }*//>
-          <TodoContext.Consumer>
+      <TodoContext.Consumer>
           {({lista,
             searchvalue,
             setLista,  
             searchedTodo,
             deleteTodo,
-            setSearchValue,})=>(<ToDoList>
+            setSearchValue,
+            openModal,
+            setOpenModal,})=>(
+      <React.Fragment>
+      <ToDoSearch     setSearchValue={setSearchValue }/>
+          <ToDoList>
           {searchedTodo.map((todo)=>   
             <ToDoItem 
             key={todo.text} 
@@ -36,9 +42,16 @@ function App() {
             />
           )}
           </ToDoList>
-          )}
-          </TodoContext.Consumer>
+       {
+         openModal && (
+         <Portal>
+           <ToDoForm setOpenModal={setOpenModal}/>
+         </Portal>)
+       }
+        <ToDoButton setOpenModal={setOpenModal} openModal={openModal}></ToDoButton>
       </React.Fragment>
+      )}
+      </TodoContext.Consumer>
     </TodoProvider>
   );   
  } 
