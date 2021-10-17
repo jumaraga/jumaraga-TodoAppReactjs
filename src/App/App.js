@@ -1,13 +1,13 @@
-import { ToDoList } from './ToDoList';
-import { ToDoItem } from './ToDoItem';
+import { ToDoList } from '../ToDoList/ToDoList';
+import { ToDoItem } from '../ToDoItem/ToDoItem';
 import './App.css';
-import { ToDoSearch } from './ToDoSearch';
-import { TodoContext } from './Context';
-import { TodoProvider } from './Context';
-import { ToDoButton } from './ToDoButtom';
+import { ToDoSearch } from '../ToDoSearch/ToDoSearch';
+import { TodoContext } from '../Contex/Context';
+import { TodoProvider } from '../Contex/Context';
+import { ToDoButton } from '../ToDoButton/ToDoButtom';
 import React from 'react';
-import { Portal } from './model';
-import { ToDoForm } from './ToDoForm';
+import { Portal } from '../model';
+import {ToDoForm} from '../ToDoForm/ToDoForm' 
 
 function App() { 
  /*   const {
@@ -18,7 +18,7 @@ function App() {
     deleteTodo,
     setSearchValue,
   } =React.useContext(TodoContext);  */
-    
+
   return ( 
     <TodoProvider>
       <TodoContext.Consumer>
@@ -30,7 +30,7 @@ function App() {
             setSearchValue,
             openModal,
             setOpenModal,})=>(
-      <React.Fragment>
+      <React.Fragment classname='App' >
       <ToDoSearch     setSearchValue={setSearchValue }/>
           <ToDoList>
           {searchedTodo.map((todo)=>   

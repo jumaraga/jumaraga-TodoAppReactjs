@@ -1,5 +1,5 @@
 import React from "react";
-
+import './ToDoSearch.css'
 function ToDoSearch({setSearchValue}){
    function searchTodo(Event){
       const buscador=document.querySelector(`input`).value;
@@ -8,7 +8,7 @@ function ToDoSearch({setSearchValue}){
     }
   
  return (
-   <input onChange={()=>searchTodo()}></input>
+   <input className='search' onChange={()=>searchTodo()} placeholder='Encuentra la que te falta hacer' ></input>
  )
 }
 export {ToDoSearch}
