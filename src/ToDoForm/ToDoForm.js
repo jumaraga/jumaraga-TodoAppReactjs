@@ -11,8 +11,9 @@ function ToDoForm(){
    const onAdd=(event)=>{
       try{
          event.preventDefault();
+         setOpenModal(false);
          saveAdd({text:newToDoValue,completed:false });
-         setOpenModal(false)
+         
       } catch(e){
          console.error(e);
       }
@@ -32,11 +33,12 @@ function ToDoForm(){
          onChange={onchange}
          className='form-text'>
          </textarea>
-         <div>
-            <button type='button' onClick={()=>onCancel()}>
+         <div className='form-div'>
+            <button type='button' onClick={()=>onCancel()} className='form_buttons'
+            >
                Cancelar
             </button>
-            <button type='button' onClick={onAdd}>
+            <button type='button' onClick={onAdd} className='form_buttons'>
                Añadir
             </button>
          </div>

@@ -9,7 +9,7 @@ function ToDoItem(props) {
   
   return (
     <li className='task'>
-      <input id={props.text} className='check' type="checkbox" onClick={()=>oncompleted(identificador)}></input>
+      <input id={props.text} checked={props.completed} className='check' type="checkbox" onClick={()=>oncompleted(identificador)}></input>
       <p id={`${props.text}hola`} className={`${props.completed && 'completed'}`}>{props.text}</p>
       <span className='delete' onClick={props.onDelete}>X</span>
     </li>

@@ -1,55 +1,52 @@
-import React, { useLayoutEffect } from "react";
+import React from "react";
 import { useLocalStorage } from "./localStorage";
 const TodoContext = React.createContext();
 
 function TodoProvider(props){
-   const todos =[
-      {text:' hola',completed: false },
-      {text:' gua',completed: false },
-      {text:'miau',completed: false },
-    ]
-   const [lista, setLista]=React.useState(todos);
    const [searchvalue, setSearchValue]= React.useState('');
    const [openModal, setOpenModal]= React.useState(false);
-   const {saveLocalStorage,prevState}=useLocalStorage('');
+   const {item,
+      saveItem: saveLocalStorage,
+      loading,
+      error,}=useLocalStorage('TODOS_V1',[]);
    let searchedTodo= [];
  
    (!searchvalue.length>=1)
-   ?searchedTodo=lista
-   :searchedTodo = lista.filter(
+   ?searchedTodo=item
+   :searchedTodo = item.filter(
      todo=>{
      const todoText =todo.text.toLowerCase();
      const searchvalueLower= searchvalue.toLowerCase();
       return todoText.includes(searchvalueLower)
      })
    const deleteTodo = (text) => {
-     const todoIndex = lista.findIndex(todo => todo.text === text);
-     const newTodos = [...lista];
+     const todoIndex = item.findIndex(todo => todo.text === text);
+     const newTodos = [...item];
      newTodos.splice(todoIndex, 1);
-     setLista(newTodos);
+     saveLocalStorage(newTodos);
    }; 
    const saveAdd = (text) => {
-      const newTodos = [...lista];
+      const newTodos = [...item];
       newTodos.push(text);
-      setLista(newTodos);
       saveLocalStorage(newTodos);
     }; 
-   function oncompleted(item) {
+   function oncompleted(identificador) {
       // si simplemente colocamos let checked = document.querySelector(`#${identificador}`) no consiederará inizilisada la variable checked 
-      let checked = document.getElementById(`${item}`).checked;
-      const newTodos=[...lista] 
-      const index= newTodos.findIndex(todo=>todo.text===item);
+      let checked = document.getElementById(`${identificador}`).checked;
+      const newTodos=[...item] 
+      const index= newTodos.findIndex(todo=>todo.text===identificador);
       (checked)? newTodos[index].completed= true
-      :newTodos[index].completed= false
-      setLista(newTodos)
+      :newTodos[index].completed= false;
+      saveLocalStorage(newTodos)
    }
 
    
    return(
       <TodoContext.Provider value={{
-            lista,
+            item,
+            loading,
+            error,
             searchvalue,
-            setLista,
             searchedTodo,
             deleteTodo,
             setSearchValue,

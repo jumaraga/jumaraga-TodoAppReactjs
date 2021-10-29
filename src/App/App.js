@@ -24,36 +24,41 @@ function App() {
   return ( 
     <TodoProvider>
       <TodoContext.Consumer>
-          {({lista,
+          {({item,
             searchvalue,
-            setLista,  
+            error,
+            loading,
             searchedTodo,
             deleteTodo,
             setSearchValue,
             openModal,
             setOpenModal,})=>(
-      <React.Fragment classname='App' >
+      <React.Fragment  >
         <ToDoCounter />
-      <ToDoSearch     setSearchValue={setSearchValue }/>
-          <ToDoList>
-          {searchedTodo.map((todo)=>   
-            <ToDoItem 
-            key={todo.text} 
-            text={todo.text}
-            completed={todo.completed} 
-            onDelete={()=>deleteTodo(todo.text)} 
-            />
-          )}
-          </ToDoList>
-       {
-         openModal && (
-         <Portal>
-           <ToDoForm setOpenModal={setOpenModal}/>
-         </Portal>)
-       }
-        <ToDoButton setOpenModal={setOpenModal} openModal={openModal}></ToDoButton>
-      </React.Fragment>
-      )}
+        <ToDoSearch     setSearchValue={setSearchValue }/>
+            <ToDoList>
+            {error && <p>Desespérate, hubo un error...</p>}
+            {loading && <p>Estamos cargando, no desesperes...</p>}
+            {(!loading && !searchedTodo.length) && <p>¡Crea tu primer TODO!</p>}
+
+            {searchedTodo.map((todo)=>   
+              <ToDoItem 
+              key={todo.text} 
+              text={todo.text}
+              completed={todo.completed} 
+              onDelete={()=>deleteTodo(todo.text)} 
+              />
+            )}
+            </ToDoList>
+        {
+          openModal && (
+          <Portal>
+            <ToDoForm setOpenModal={setOpenModal}/>
+          </Portal>)
+        }
+          <ToDoButton setOpenModal={setOpenModal} openModal={openModal}></ToDoButton>
+        </React.Fragment>
+        )}
       </TodoContext.Consumer>
     </TodoProvider>
   );   
