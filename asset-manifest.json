@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/jumaraga-TodoAppReactjs/static/css/main.b42614da.chunk.css",
+    "main.js": "/jumaraga-TodoAppReactjs/static/js/main.5e485765.chunk.js",
+    "main.js.map": "/jumaraga-TodoAppReactjs/static/js/main.5e485765.chunk.js.map",
+    "runtime-main.js": "/jumaraga-TodoAppReactjs/static/js/runtime-main.c17d4b1d.js",
+    "runtime-main.js.map": "/jumaraga-TodoAppReactjs/static/js/runtime-main.c17d4b1d.js.map",
+    "static/js/2.7188eca0.chunk.js": "/jumaraga-TodoAppReactjs/static/js/2.7188eca0.chunk.js",
+    "static/js/2.7188eca0.chunk.js.map": "/jumaraga-TodoAppReactjs/static/js/2.7188eca0.chunk.js.map",
+    "static/js/3.cbbc03f1.chunk.js": "/jumaraga-TodoAppReactjs/static/js/3.cbbc03f1.chunk.js",
+    "static/js/3.cbbc03f1.chunk.js.map": "/jumaraga-TodoAppReactjs/static/js/3.cbbc03f1.chunk.js.map",
+    "index.html": "/jumaraga-TodoAppReactjs/index.html",
+    "static/css/main.b42614da.chunk.css.map": "/jumaraga-TodoAppReactjs/static/css/main.b42614da.chunk.css.map",
+    "static/js/2.7188eca0.chunk.js.LICENSE.txt": "/jumaraga-TodoAppReactjs/static/js/2.7188eca0.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.c17d4b1d.js",
+    "static/js/2.7188eca0.chunk.js",
+    "static/css/main.b42614da.chunk.css",
+    "static/js/main.5e485765.chunk.js"
+  ]
+}
