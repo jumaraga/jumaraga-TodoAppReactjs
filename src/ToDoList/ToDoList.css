@@ -1,0 +1,11 @@
+ul{
+   position: relative;
+   width: auto;
+   list-style: none;
+   min-height: auto;
+   display: flex;
+   flex-direction: column;
+   align-content: center;
+   align-items: center;
+   justify-content: space-evenly;
+}
