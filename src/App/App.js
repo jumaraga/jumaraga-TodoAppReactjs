@@ -2,12 +2,14 @@ import { ToDoList } from '../ToDoList/ToDoList';
 import { ToDoItem } from '../ToDoItem/ToDoItem';
 import './App.css';
 import { ToDoSearch } from '../ToDoSearch/ToDoSearch';
-import { TodoContext } from '../Contex/Context';
-import { TodoProvider } from '../Contex/Context';
+import { TodoContext } from '../Context/Context';
+import { TodoProvider } from '../Context/Context';
 import { ToDoButton } from '../ToDoButton/ToDoButtom';
 import React from 'react';
 import { Portal } from '../model';
 import {ToDoForm} from '../ToDoForm/ToDoForm' 
+import { ToDoCounter } from '../ToDoCounter/ToDoCounter';
+
 
 function App() { 
  /*   const {
@@ -31,6 +33,7 @@ function App() {
             openModal,
             setOpenModal,})=>(
       <React.Fragment classname='App' >
+        <ToDoCounter />
       <ToDoSearch     setSearchValue={setSearchValue }/>
           <ToDoList>
           {searchedTodo.map((todo)=>   

@@ -1,5 +1,6 @@
 import React from "react";
-import { TodoContext } from "../Contex/Context";
+import { TodoContext } from '/home/josue/pruebas/src/Context/Context.js';
+import './ToDoForm.css'
 
 function ToDoForm(){
    const {saveAdd,setOpenModal} = React.useContext(TodoContext);
@@ -23,12 +24,14 @@ function ToDoForm(){
       console.log(event.target.value);
    }
    return(  
-      <form onSubmit={onAdd}>
+      <form onSubmit={onAdd} className='form'>
          <label>Escribe tu nuevo to-do</label>
          <textarea 
          value={newToDoValue} 
          placeholder='cortar la cebolla para el almuerzo'  
-         onChange={onchange}></textarea>
+         onChange={onchange}
+         className='form-text'>
+         </textarea>
          <div>
             <button type='button' onClick={()=>onCancel()}>
                Cancelar

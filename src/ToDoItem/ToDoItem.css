@@ -22,9 +22,16 @@
    height: 30px;
    right: 15px;
    top: 15px;
+   cursor: pointer;
+}
+.delete:hover{
+   color:red;
 }
 .task p{
    max-width: 180px;
    overflow-wrap: anywhere;
    height: auto;
+}
+.completed{
+   text-decoration: line-through;
 }
